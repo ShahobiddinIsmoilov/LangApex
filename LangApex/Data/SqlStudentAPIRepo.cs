@@ -1,10 +1,9 @@
 ﻿using LangApex.Models;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LangApex.Data
 {
-    public class SqlStudentAPIRepo
+    public class SqlStudentAPIRepo : IStudentAPIRepo
     {
         private readonly StudentContext _context;
 
@@ -33,7 +32,7 @@ namespace LangApex.Data
             _context.Students.Remove(student);
         }
 
-        public async Task<IEnumerable<Student>> GetAllCommands()
+        public async Task<IEnumerable<Student>> GetAllStudents()
         {
             return await _context.Students.ToListAsync();
         }
@@ -46,6 +45,11 @@ namespace LangApex.Data
         public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() >= 0;
+        }
+
+        public Task UpdateStudent(Student student)
+        {
+            throw new NotImplementedException();
         }
     }
 }

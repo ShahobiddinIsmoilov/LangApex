@@ -3,7 +3,6 @@ using LangApex.Data;
 using LangApex.Dtos;
 using LangApex.Models;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LangApex.Controllers
 {
@@ -15,7 +14,8 @@ namespace LangApex.Controllers
 
         private readonly IMapper _mapper;
 
-        public StudentsController(IStudentAPIRepo repository, IMapper mapper)        {
+        public StudentsController(IStudentAPIRepo repository, IMapper mapper)
+        {
             _repository = repository;
 
             _mapper = mapper;
@@ -43,7 +43,7 @@ namespace LangApex.Controllers
             return Ok(_mapper.Map<IEnumerable<StudentReadDto>>(students));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{name}")]
         public async Task<IActionResult> GetStudentByName(string name)
         {
             var student = await _repository.GetStudentByName(name);
@@ -54,7 +54,7 @@ namespace LangApex.Controllers
             return Ok(_mapper.Map<StudentReadDto>(student));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{name}")]
         public async Task<IActionResult> DeleteStudent(string name)
         {
             var studentModelFromRepo = await _repository.GetStudentByName(name);
@@ -69,7 +69,7 @@ namespace LangApex.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{name}")]
         public async Task<IActionResult> UpdateStudent(string name, StudentUpdateDto updateDto)
         {
             var studentModelFromRepo = await _repository.GetStudentByName(name);

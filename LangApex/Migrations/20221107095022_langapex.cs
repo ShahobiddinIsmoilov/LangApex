@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LangApex.Migrations
 {
-    public partial class LangApex : Migration
+    public partial class langapex : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace LangApex.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(2)", maxLength: 2, nullable: false),
+                    Name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(type: "character varying(9)", maxLength: 9, nullable: false),
                     CourseDays = table.Column<string>(type: "text", nullable: false),
                     CourseTime = table.Column<string>(type: "text", nullable: false),

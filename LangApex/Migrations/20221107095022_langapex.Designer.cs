@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LangApex.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20221107063511_LangApex")]
-    partial class LangApex
+    [Migration("20221107095022_langapex")]
+    partial class langapex
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,8 +41,8 @@ namespace LangApex.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("character varying(2)");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
